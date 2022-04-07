@@ -16,7 +16,7 @@ map' f (x:xs) =  f x : map' f xs
 -- d)
 listNumeros = 1 : 2 : 3 : []
 
--- e)
+-- e) concatenar lista
 []     ++! ys = ys
 (x:xs) ++! ys = x : xs ++! ys
 
