@@ -3,10 +3,6 @@
 preludio, defina recursivamente las siguientes funciones y
 determine su tipo más general:
 
-e) 'restos', que calcula la lista de los restos de la
-división de los elementos de una lista de números dada por otro
-número dado
-
 f) 'cuadrados', que dada una lista de números, devuelva la
 lista de sus cuadrados
 
@@ -78,3 +74,15 @@ codes (c:cs) = parametro c : codes cs
     [1, 2, 3, 4, 5]
 
 -}
+
+{-
+    e) 'restos', que calcula la lista de los restos de la
+    división de los elementos de una lista de números dada por otro
+    número dado
+-}
+
+-- resto :: Integer -> Integer -> Integer
+
+-- resto n d
+
+-- restos :: Num a => [a] -> a -> [a]
