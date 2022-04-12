@@ -52,9 +52,18 @@ init' :: CList a -> CList a
 init' (CUnit a) = CUnit a
 init' (Consnoc l xs r) = cons l xs
 
+-- inits que devuelve una lista de CLists - Preguntar
+initsAux :: CList a -> [CList a]
+initsAux EmptyCL = [EmptyCL]
+initsAux lista = EmptyCL : (map (cons (headCL lista)) (initsAux (tailCL lista)))
+
+inits :: CList a -> [CList a]
+inits lista = initsAux lista
+
+-- inits' que devuelve una CList de Clists
 listToCL :: [a] -> CList a
 listToCL []     = EmptyCL
 listToCL (x:xs) = cons x (listToCL xs)
 
-inits :: CList a -> CList (CList a)
--- inits lista = listToCL (inits)
+inits' :: CList a -> CList (CList a)
+inits' lista = listToCL (initsAux lista) 
