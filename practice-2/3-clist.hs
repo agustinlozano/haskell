@@ -2,11 +2,16 @@
 data CList a = EmptyCL | CUnit a | Consnoc a (CList a) a deriving Show
 
 list1 = Consnoc 8 (Consnoc 3 (CUnit 9) 2) 33
-list2 = Consnoc 7 (Consnoc 4 EmptyCL 5) 11
+list2 = Consnoc 7 (Consnoc 5 EmptyCL 1) 2
+list3 = Consnoc 3 (Consnoc 11 EmptyCL 8) 33
+list4 = Consnoc 11 (CUnit 8) 33
+list5 = Consnoc 3 EmptyCL 8
+list6 = Consnoc 7 (Consnoc 5 EmptyCL 1) 2
 
 -- a) Implementar las operaciones de este tipo algebraico:
 -- Funciones de acceso
 headCL :: CList a -> a
+headCL EmptyCL = error "No rompas las bolas con meter mierdas raras"
 headCL (CUnit a) = a
 headCL (Consnoc l xs r) = l
 
@@ -49,10 +54,11 @@ snoc (CUnit y) x        = Consnoc y EmptyCL x
 snoc (Consnoc l xs r) x = Consnoc l (snoc xs r) x
 
 init' :: CList a -> CList a
+init' EmptyCL = EmptyCL
 init' (CUnit a) = CUnit a
 init' (Consnoc l xs r) = cons l xs
 
--- inits que devuelve una lista de CLists - Preguntar
+-- inits que devuelve una lista de CLists - PREGUNTAR
 initsAux :: CList a -> [CList a]
 initsAux EmptyCL = [EmptyCL]
 initsAux lista = EmptyCL : (map (cons (headCL lista)) (initsAux (tailCL lista)))
@@ -66,4 +72,20 @@ listToCL []     = EmptyCL
 listToCL (x:xs) = cons x (listToCL xs)
 
 inits' :: CList a -> CList (CList a)
-inits' lista = listToCL (initsAux lista) 
+inits' lista = listToCL (inits lista) 
+
+{-
+    d) Definir una funcion lasts que toma una CList y devuelve una CList con 
+    todas las posibles terminaciones de la CList.  
+-}
+last' :: CList a -> a
+last' EmptyCL = error "No rompas las bolas con meter mierdas raras"
+last' (CUnit a) = a
+last' (Consnoc l xd r) = r
+
+-- lasts :: CList a -> [CList a]
+-- lasts (CUnit a) = [EmptyCL, CUnit a]
+-- lasts lista = EmptyCL : (map (cons (last' lista)) (lasts (init' lista)))
+
+lasts :: CList a -> [CList a]
+lasts lista = map reverseCL (inits (reverseCL lista))
