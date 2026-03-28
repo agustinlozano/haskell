@@ -23,6 +23,21 @@ uniques xs = f xs []
             | otherwise = f xs (x : acc)
 
 {-
+    Helper `frequency`
+    Dado un elemento y una lista, devulve la cantidad de veces que aparece el elementos
+
+    frequency :: (Nun a) => e -> [a] -> b
+-}
+frequency e [] = 0
+frequency e xs = f xs 0
+    where
+        f [] acc = acc
+        f (x:xs) acc
+            | x == e = f xs (acc + 1)
+            | otherwise = f xs acc
+
+
+{-
     Helper `frequencies`
     Dada una lista mapea una tupla (v,f)
     Donde
@@ -33,8 +48,8 @@ uniques xs = f xs []
     frequencies :: (Num b) [a] -> (a,b) 
 -}
 
--- frequencies [] = []
--- frequencies xs = map someFn xs
+frequencies [] = []
+frequencies xs = map (\x -> (x,frequency x xs)) (uniques xs)
 
 {-
     d) paresIguales :: Int → Int → Int → Int → Bool
