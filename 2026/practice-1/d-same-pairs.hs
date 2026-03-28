@@ -19,15 +19,15 @@ uniques xs = f xs []
     where
         f [] acc = acc
         f (x:xs) acc
-            | contains x xs = f xs acc
+            | contains x acc = f xs acc
             | otherwise = f xs (x : acc)
 
 {-
     Helper `frequency`
     Dado un elemento y una lista, devulve la cantidad de veces que aparece el elementos
-
-    frequency :: (Nun a) => e -> [a] -> b
 -}
+
+frequency :: Eq a => a -> [a] -> Int
 frequency e [] = 0
 frequency e xs = f xs 0
     where
@@ -36,18 +36,18 @@ frequency e xs = f xs 0
             | x == e = f xs (acc + 1)
             | otherwise = f xs acc
 
-
 {-
     Helper `frequencies`
-    Dada una lista mapea una tupla (v,f)
+    Dada una lista mapea otra donde cada elemento es una tupla (v,f)
     Donde
         v es un valor unico en lista
         f es la frecuencia del valor en la misma
     
     Tipo de la funcion deberia ser algo asi:
-    frequencies :: (Num b) [a] -> (a,b) 
+    
 -}
 
+frequencies :: Eq a => [a] -> [(a,Int)]
 frequencies [] = []
 frequencies xs = map (\x -> (x,frequency x xs)) (uniques xs)
 
@@ -63,8 +63,8 @@ frequencies xs = map (\x -> (x,frequency x xs)) (uniques xs)
     paresIguales 3 1 1 3 = True
 -}
 
--- paresIguales a b c d = resultado
---   where
---     xs = [a,b,c,d]
---     valores = ...
---     frecs = ...
+samePairs a b c d = (length freqs == 2) && (all validFreq freqs)
+    where
+        xs = [a,b,c,d]
+        freqs = frequencies xs
+        validFreq (_,f) = f == 2
