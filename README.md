@@ -2,9 +2,8 @@
 
 Personal study repository for the **Algorithms and Data Structures II** course, focused on functional programming with **Haskell**.
 
-<div style="background-color: #004f3b; color: #cbfbf1; padding: 12px 16px; border-left: 4px solid #00d492; border-radius: 8px; margin: 16px 0;">
-	<strong>Disclaimer:</strong> Most of these algorithms are just crap :D
-</div>
+> Disclaimer:
+> Most of these algorithms are just crap :D
 
 ## 🤠 Academic Context
 
