@@ -43,7 +43,7 @@ Some of the important concepts covered in the course:
 
 ---
 
-## 🗂️ Estructura del Repositorio
+## 🗂️ Repo Structure
 
 ```bash
 .
