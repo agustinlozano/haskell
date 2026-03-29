@@ -2,7 +2,7 @@
 
 Personal study repository for the **Algorithms and Data Structures II** course, focused on functional programming with **Haskell**.
 
----
+**Disclaimer**: Most of these algorithms are just crap :D
 
 ## 🤠 Academic Context
 
