@@ -9,3 +9,7 @@
     No usar listas por comprension.
 -}
 
+upto :: Int -> Int -> [Int]
+upto n m
+    | n > m = []
+    | otherwise = n : upto (n+1) m
