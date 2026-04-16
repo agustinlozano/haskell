@@ -14,11 +14,14 @@ badCambios (x:xs) = go (x:xs) x 0 []
             | otherwise = go ys y (i+1) acc
 
 -- Version corregida
-cambios :: Eq a => [a] -> [Int]
-cambios [] = []
-cambios (x:xs) = go xs x 0 []
+cambiosRecursiva :: Eq a => [a] -> [Int]
+cambiosRecursiva [] = []
+cambiosRecursiva (x:xs) = go xs x 0 []
     where
         go [] _ _ acc = reverse acc
         go (y:ys) anterior i acc
             | y /= anterior = go ys y (i+1) (i:acc)   -- Guardamos 'i' que es la posición del cambio
             | otherwise     = go ys anterior (i+1) acc
+
+-- version listas por compresion
+cambios xs = [ i | (actual, siguiente, i) <- zip3 xs (tail xs) [0..], actual /= siguiente ]
