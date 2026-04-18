@@ -1,5 +1,5 @@
 {-
-    g) upto :: Int → Int → [Int] 
+    g) upto :: Int → Int → [Int]
     Que dado dos numeros enteros n y m devuelve la lista:
     [n, n + 1, n + 2, ..., m ]
 
@@ -11,5 +11,5 @@
 
 upto :: Int -> Int -> [Int]
 upto n m
-    | n > m = []
-    | otherwise = n : upto (n+1) m
+  | n > m = []
+  | otherwise = n : upto (n + 1) m

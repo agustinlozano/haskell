@@ -1,12 +1,12 @@
 -- Funcion head usando operador cons
 head' :: [a] -> a
-head' [] = error "No se puede utilizar con lista vacia" 
-head' (x:_) = x
+head' [] = error "No se puede utilizar con lista vacia"
+head' (x : _) = x
 
 -- Funcion tail usando operador cons
 tail' :: [a] -> [a]
-tail' [] = [] 
-tail' (_:xs) = xs
+tail' [] = []
+tail' (_ : xs) = xs
 
 -- Listas por comprension con generador dependiente
 {-
@@ -17,7 +17,7 @@ tail' (_:xs) = xs
       (3,3),(3,4),(3,5)]
 -}
 
--- Usando generadore dependientes podemos definir flatten 
+-- Usando generadore dependientes podemos definir flatten
 -- definida en el preludio.
 
 flatten' :: [[a]] -> [a]
@@ -26,7 +26,7 @@ flatten' xss = [x | xs <- xss, x <- xs]
 -- Con listas por comprension podemos definir la funcion factors
 
 factors :: Int -> [Int]
-factors n = [x | x <- [1..n], n `mod` x == 0]
+factors n = [x | x <- [1 .. n], n `mod` x == 0]
 
 -- A partir de esa funcion podemos definir prime
 

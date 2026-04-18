@@ -25,10 +25,9 @@ con longitud mayor que 'n' -}
 
 -- a) 'suma', que suma todos los elementos de una lista de números
 -- suma :: [Integer] -> Integer
-suma :: Num p => [p] -> p
+suma :: (Num p) => [p] -> p
 suma [] = 0
-suma (x:xs) = x + suma xs
-
+suma (x : xs) = x + suma xs
 
 {-
     b) 'alguno', que devuelve True si algún elemento de una
@@ -37,8 +36,7 @@ suma (x:xs) = x + suma xs
 -}
 alguno :: [Bool] -> Bool
 alguno [] = False
-alguno (x:xs) = x || alguno xs
-
+alguno (x : xs) = x || alguno xs
 
 {-
     c) 'todos', que devuelve True si todos los elementos de
@@ -47,8 +45,7 @@ alguno (x:xs) = x || alguno xs
 -}
 todos :: [Bool] -> Bool
 todos [] = True
-todos (x:xs) = x && todos xs
-
+todos (x : xs) = x && todos xs
 
 {-
     d) 'codes', que dada una lista de caracteres, devuelve la
@@ -59,13 +56,14 @@ parametro e = orden e "abcdefghijklmnopqrstuvwxyz" 1
 orden :: (Ord e, Num n) => e -> [e] -> n -> n
 orden e [] posicion = error "El elemento no pertenece al orden"
 orden e [x] posicion = posicion
-orden e (x:xs) posicion = if e == x
+orden e (x : xs) posicion =
+  if e == x
     then posicion
-    else orden e xs (posicion+1)
+    else orden e xs (posicion + 1)
 
-codes :: Num a => [Char] -> [a]
+codes :: (Num a) => [Char] -> [a]
 codes [] = []
-codes (c:cs) = parametro c : codes cs
+codes (c : cs) = parametro c : codes cs
 
 {-
 

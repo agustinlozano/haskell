@@ -7,22 +7,21 @@ regla b =
 -- b)
 deletehead [] = []
 deletehead [x] = []
-deletehead (x:y:xs) = y : deletehead (x:xs)
+deletehead (x : y : xs) = y : deletehead (x : xs)
 
 -- c)
-map' f [] =  []
-map' f (x:xs) =  f x : map' f xs
+map' f [] = []
+map' f (x : xs) = f x : map' f xs
 
 -- d)
 listNumeros = 1 : 2 : 3 : []
 
 -- e) concatenar lista
-[]     ++! ys = ys
-(x:xs) ++! ys = x : xs ++! ys
-
+[] ++! ys = ys
+(x : xs) ++! ys = x : xs ++! ys
 
 -- f)
-addToTail x xs = map (+x) (tail xs)
+addToTail x xs = map (+ x) (tail xs)
 
 -- g)
 -- listmin xs = (head . sort) xs

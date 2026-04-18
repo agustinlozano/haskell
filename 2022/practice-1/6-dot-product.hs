@@ -4,7 +4,7 @@
     posición) de ambas listas. Definir una función 'scalarProduct' que
     devuelva el producto escalar de dos listas.
 
-    Sugerencia: Usar las funciones 'zip' y 'sum'. 
+    Sugerencia: Usar las funciones 'zip' y 'sum'.
 -}
 
-scalarProduct xs ys = sum [ x*y | (x,y) <- zip xs ys ]
+scalarProduct xs ys = sum [x * y | (x, y) <- zip xs ys]

@@ -13,7 +13,7 @@
 
 import Data.List (sort)
 
-samePairs :: Ord a => a -> a -> a -> a -> Bool
+samePairs :: (Ord a) => a -> a -> a -> a -> Bool
 samePairs a b c d =
-    let [w,x,y,z] = sort [a,b,c,d]
-    in w == x && y == z && x /= y
+  let [w, x, y, z] = sort [a, b, c, d]
+   in w == x && y == z && x /= y

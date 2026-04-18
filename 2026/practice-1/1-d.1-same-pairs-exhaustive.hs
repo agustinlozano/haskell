@@ -11,8 +11,8 @@
 	samePairs 3 1 1 3 = True
 -}
 
-samePairs :: Eq a => a -> a -> a -> a -> Bool
+samePairs :: (Eq a) => a -> a -> a -> a -> Bool
 samePairs a b c d =
-    (a == b && c == d && a /= c) ||
-    (a == c && b == d && a /= b) ||
-    (a == d && b == c && a /= b)
+  (a == b && c == d && a /= c)
+    || (a == c && b == d && a /= b)
+    || (a == d && b == c && a /= b)
