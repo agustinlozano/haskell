@@ -5,3 +5,5 @@
 -}
 
 map :: (a -> b) -> [a] -> [b]
+map f [] = []
+map f xs = foldr (\x ac -> ...) [] xs
