@@ -72,6 +72,20 @@ inits cl = snocCl cl (inits (initCl cl))
     initCl (CUnit _) = EmptyCL
     initCl (Consnoc l xs r)
       | isEmptyCl xs = CUnit l
-      | otherwise = Consnoc l (initCl (snocCl r xs)) (headCl (reverseCl (snocCl r xs)))
+      | otherwise = Consnoc l (initCl xs) (lastCl xs)
+    -- lastCl returns the last element of the CList
+    lastCl (CUnit x) = x
+    lastCl (Consnoc _ _ x) = x
+
+-- DOCS: `inits` steps
+{-
+  1. Base case: inits of an empty CList is a CList containing just the empty CList.
+  2. For a CUnit, the inits are the empty CList and the CUnit itself.
+  3. For a Consnoc, we recursively call inits on the "init" of the list (the list without the last element) and then "snoc" the original list to the result.
+     - The `initCl` function removes the last element from the CList, effectively giving us all but the last element.
+     - The `lastCl` function retrieves the last element, which is needed to construct the new inits.
+     - By snoc-ing the original list to the result of inits on its init, we build up all prefixes of the original list.
+
+-}
 
 -- Note: initCl is the mirror of the tailCL we made earlier.
