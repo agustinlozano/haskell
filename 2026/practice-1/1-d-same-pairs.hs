@@ -1,7 +1,7 @@
 {-
     Helper `contains`
-    Dada una lista y un elemento verifica si
-    el elemento esta contenido en la lista
+  Given a list and an element, checks whether
+  the element is contained in the list
 -}
 
 contains :: (Eq a) => a -> [a] -> Bool
@@ -12,7 +12,7 @@ contains n (x : xs)
 
 {-
     Helper `uniques`
-    Dada una lista devuleve otra con los valores unicos (sin duplicados)
+  Given a list, returns another with unique values (without duplicates)
 -}
 
 uniques :: (Eq a) => [a] -> [a]
@@ -25,8 +25,8 @@ uniques xs = f xs []
 
 {-
     Helper `frequency`
-    Dado un elemento y una lista, devulve la cantidad de veces
-    que aparece el elemento en la lista
+  Given an element and a list, returns how many times
+  the element appears in the list
 -}
 
 frequency :: (Eq a) => a -> [a] -> Int
@@ -40,10 +40,10 @@ frequency e xs = f xs 0
 
 {-
     Helper `frequencies`
-    Dada una lista mapea otra donde cada elemento es una tupla (v,f)
-    Donde:
-        v es un valor unico en lista original
-        f es la frecuencia del valor en la misma
+  Given a list, maps to another where each element is a tuple (v,f)
+  Where:
+    v is a unique value from the original list
+    f is the frequency of that value in it
 -}
 
 frequencies :: (Eq a) => [a] -> [(a, Int)]
@@ -53,8 +53,8 @@ frequencies xs = map (\x -> (x, frequency x xs)) (uniques xs)
 {-
     d) samePairs :: Int → Int → Int → Int → Bool
 
-    toma 4 numeros enteros y retorna True si de dos en dos son iguales (en cualquier orden),
-    en los demas casos retorna False. Por ejemplo:
+  takes 4 integers and returns True if they are equal in pairs (in any order),
+  in all other cases it returns False. For example:
 
     samePairs 3 1 1 2 = False
     samePairs 3 1 3 1 = True
@@ -63,14 +63,14 @@ frequencies xs = map (\x -> (x, frequency x xs)) (uniques xs)
 -}
 
 {-
-    Mi solución
-    Convertir un problema de combinaciones en uno de frecuencias
+  My solution
+  Convert a combinations problem into a frequencies problem
 
-    Para eso:
-    - Tratar los valores como una lista
-    - Averiguar los valores únicos en la lista original
-    - Averigual la frecuencia con la que aparece cada valor unico en la lista original
-    - Finalmente, verificar que se cumplan las condificiones del ejercicio
+  To do this:
+  - Treat the values as a list
+  - Find the unique values in the original list
+  - Find the frequency with which each unique value appears in the original list
+  - Finally, verify that the exercise conditions are satisfied
 -}
 
 samePairs :: (Eq a) => a -> a -> a -> a -> Bool
